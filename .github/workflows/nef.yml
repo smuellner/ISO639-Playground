@@ -16,9 +16,9 @@ jobs:
     - name: Install nef
       run: brew install nef
     - name: Create ISO639.playgroundbook
-      run: nef ipad --name ISO639 --package Package.swift --output PlaygroundBook
+      run: nef ipad --name ISO639 --package Package.swift --output ./artifacts
     - name: Upload ISO639.playgroundbook
       uses: actions/upload-artifact@v1
       with:
-        name: PlaygroundBook
-        path: PlaygroundBook/ISO639.playgroundbook
+        name: ISO639.playgroundbook
+        path: ./artifacts/ISO639/ISO639.playgroundbook
