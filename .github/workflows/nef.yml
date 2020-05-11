@@ -1,0 +1,31 @@
+name: Playground
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install nef
+      run: brew install nef
+    - name: Create ISO639.playgroundbook
+      run: nef ipad --name ISO639 --package Package.swift --output ./artifacts
+    - name: Upload ISO639.playgroundbook
+      uses: actions/upload-artifact@v1
+      with:
+        name: ISO639.playgroundbook
+        path: ./artifacts/ISO639/
+    - name: Create Markdown
+      run: nef markdown --project ISO639.app --output ./docs
+    - name: Upload Markdown
+      uses: actions/upload-artifact@v1
+      with:
+        name: Markdown
+        path: ./docs/
