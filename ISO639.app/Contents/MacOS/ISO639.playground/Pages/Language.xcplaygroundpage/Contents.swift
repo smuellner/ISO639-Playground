@@ -57,4 +57,11 @@ Language.all.from(with: ISO639Alpha2.cre)
 */
 Language.all.from(with: [ISO639Alpha2.cre, ISO639Alpha2.nav])
 
+
+/*:
+ Get the *current [Locale](https://developer.apple.com/documentation/foundation/nslocale)* as a language
+*/
+Language.all.from(with: NSLocale.current)
+
+
 //: [Next](@next)
