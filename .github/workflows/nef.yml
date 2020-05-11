@@ -1,4 +1,4 @@
-name: Swift
+name: Playground
 
 on:
   push:
@@ -22,3 +22,10 @@ jobs:
       with:
         name: ISO639.playgroundbook
         path: ./artifacts/ISO639/
+    - name: Create Markdown
+      run: nef markdown --project ISO639.app --output ./docs
+    - name: Upload Markdown
+      uses: actions/upload-artifact@v1
+      with:
+        name: Markdown
+        path: ./docs/
